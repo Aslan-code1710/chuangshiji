@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创世纪 · 小说创作工作台</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="auth-view" class="auth-shell">
+      <section class="auth-card">
+        <p class="eyebrow">GENESIS / 创世纪</p>
+        <h1>你的小说宇宙，从这里诞生。</h1>
+        <p>使用邮箱登录后，世界观、人物与故事线会安全同步到你的云端空间。</p>
+        <label>邮箱<input id="email" type="email" placeholder="name@example.com" /></label>
+        <button id="signin">发送登录链接</button>
+        <p id="auth-message" class="muted"></p>
+      </section>
+    </div>
+
+    <div id="app-view" class="app hidden">
+      <aside class="side">
+        <div class="brand"><span>✦</span><div><b>创世纪</b><small>小说创作工作台</small></div></div>
+        <p class="side-label">我的小说</p>
+        <div id="novel-list" class="novel-list"></div>
+        <button id="new-novel" class="text-button">＋ 新建小说</button>
+        <div class="side-bottom"><span id="user-email"></span><button id="signout" class="text-button">退出</button></div>
+      </aside>
+      <main>
+        <header><div><p id="genre" class="eyebrow"></p><input id="title" class="title-input" aria-label="小说标题" /></div><div class="actions"><span id="save-status" class="muted"></span><button id="export">导出 .md</button><button id="save" class="primary">保存</button></div></header>
+        <section class="intro"><textarea id="logline" aria-label="一句话梗概" placeholder="一句话梗概：这部小说讲述什么？"></textarea><div class="stats"><span><b id="world-count">0</b>设定</span><span><b id="character-count">0</b>人物</span><span><b id="plot-count">0</b>节点</span></div></section>
+        <nav><button data-tab="world" class="active">世界观</button><button data-tab="characters">人物图谱</button><button data-tab="plot">故事线</button><button data-tab="ai">GPT 助手</button></nav>
+        <section id="world-panel" class="panel"><h2>世界规则与资料库</h2><p>一行一个设定，方便后续检索和检查矛盾。</p><textarea id="world" class="large" placeholder="例如：垃圾星·赫墨拉，是帝国最远端的废弃轨道坟场。"></textarea></section>
+        <section id="characters-panel" class="panel hidden"><div class="panel-top"><div><h2>人物图谱</h2><p>人物档案会和本小说一起同步。</p></div><button id="add-character">＋ 添加人物</button></div><div id="characters" class="character-grid"></div></section>
+        <section id="plot-panel" class="panel hidden"><h2>故事线与章节节点</h2><p>按时间顺序写下事件、转折和伏笔。</p><textarea id="timeline" class="large" placeholder="001｜坠入赫墨拉：主角苏醒，发现星核。"></textarea></section>
+        <section id="ai-panel" class="panel hidden"><h2>GPT 创作助手</h2><p>它会读取当前作品的设定来回答问题。首次使用前需要部署包内的 Supabase Edge Function。</p><div id="ai-answer" class="ai-answer">你可以让 GPT 检查设定冲突、设计感情场景，或建议后续章节节点。</div><div class="ai-input"><textarea id="ai-prompt" placeholder="例如：这条感情线如何更有张力？"></textarea><button id="ask-ai" class="primary">发送</button></div></section>
+      </main>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
